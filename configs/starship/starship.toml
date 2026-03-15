@@ -1,0 +1,227 @@
+# Starship Prompt Configuration
+# Tokyo Night風カラーパレット + Nerd Font対応
+# 要件: ターミナルにNerd Fontを設定すること (例: JetBrainsMono, FiraCode, MesloLGS)
+
+add_newline = true
+command_timeout = 1000
+
+# 2行プロンプト: 1行目に情報、2行目に入力カーソル
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+$fill\
+$nodejs\
+$python\
+$rust\
+$golang\
+$java\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+right_format = """$time"""
+
+# カラーパレット (Tokyo Night風)
+palette = "tokyonight"
+
+[palettes.tokyonight]
+sky      = "#7aa2f7"
+lavender = "#bb9af7"
+green    = "#9ece6a"
+red      = "#f7768e"
+orange   = "#ff9e64"
+yellow   = "#e0af68"
+teal     = "#73daca"
+fg       = "#c0caf5"
+muted    = "#565f89"
+
+# --- Core ---
+
+[os]
+disabled = false
+style = "fg:muted"
+
+[os.symbols]
+Macos = "󰀵 "
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+style = "bold fg:sky"
+read_only = " 󰌾"
+read_only_style = "fg:red"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold fg:green)"
+error_symbol = "[❯](bold fg:red)"
+vimcmd_symbol = "[❮](bold fg:lavender)"
+
+# --- Git ---
+
+[git_branch]
+symbol = " "
+style = "fg:lavender"
+truncation_length = 24
+truncation_symbol = "…"
+
+[git_status]
+style = "fg:orange"
+conflicted = " "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "?${count} "
+stashed = "󰏗 "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "» "
+deleted = "✘ "
+
+[git_metrics]
+disabled = false
+added_style = "fg:green"
+deleted_style = "fg:red"
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+
+# --- Languages (該当ファイルがあるときだけ表示) ---
+
+[nodejs]
+symbol = " "
+style = "fg:green"
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = " "
+style = "fg:yellow"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[rust]
+symbol = "󱘗 "
+style = "fg:red"
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+style = "fg:teal"
+format = "[$symbol($version )]($style)"
+
+[java]
+symbol = " "
+style = "fg:orange"
+format = "[$symbol($version )]($style)"
+
+# --- Docker ---
+
+[docker_context]
+symbol = " "
+style = "fg:sky"
+format = "[$symbol$context]($style) "
+only_with_files = true
+
+# --- コマンド実行時間 (2秒以上で表示) ---
+
+[cmd_duration]
+min_time = 2000
+format = "[󱎫 $duration]($style) "
+style = "fg:yellow"
+
+# --- 時刻 (右プロンプト) ---
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = "[  $time]($style)"
+style = "fg:muted"
+
+# --- バッテリー (20%以下で表示) ---
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 10
+style = "bold fg:red"
+
+[[battery.display]]
+threshold = 20
+style = "fg:orange"
+
+# --- 不要なモジュールを無効化 ---
+
+[package]
+disabled = true
+
+[cmake]
+disabled = true
+
+[conda]
+disabled = true
+
+[dart]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[helm]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+
+[nim]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[ruby]
+disabled = true
+
+[scala]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true

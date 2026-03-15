@@ -1,0 +1,3 @@
+[tasks.sync-check]
+description = "dotfiles と ~/.config の差分を確認する"
+run = "./scripts/sync-check.sh"
