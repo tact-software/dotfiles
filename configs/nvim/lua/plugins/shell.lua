@@ -1,7 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "bash" } },
+    opts = { ensure_installed = { "bash", "lua" } },
   },
   {
     "neovim/nvim-lspconfig",
